@@ -5,7 +5,7 @@ class Api::V1::FoodsController < ApplicationController
   end 
 
   def create
-    @foods = Food.create(ingredient: params[:ingredient], spice: params[:spice], measurment: params[:measurment])
+    @food = Food.create(ingredient: params[:ingredient], spice: params[:spice], measurement: params[:measurement])
     render :show
   end 
 
@@ -18,13 +18,13 @@ class Api::V1::FoodsController < ApplicationController
    @food.update(
      ingredient:params[:ingredient],
      spice: params[:spice],
-     measurment: params[:measurment]
+     measurement: params[:measurement]
     )
    render :show 
   end 
   def destroy
    @food = Food.find_by(id: params[:id])
-   @employee.destroy
+   @food.destroy
    render json: {message: "Recipe Destroyed !!!!!"}
   end 
 end
