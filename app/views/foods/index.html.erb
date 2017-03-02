@@ -1,13 +1,29 @@
 <div ng-app="app">
   <div ng-controller="foodsCtrl" ng-init="setup()">
-  <h1>Number of food:{{foods.length}}</h1>
-  <div ng-repeat="food in foods">
-  <p>Ingredients: {{food.ingredient}}</p>
-  <p>Measurment: {{food.measurement}}</p>
-  <p ng-click="toggleSpice(food)">Spice: {{food.spice}}</p>
- <!--  <p>M</p> -->
-    <!-- <h2 ng-click="toggleingredient(food)">{{food.ingredient}}</h2> -->
-  </div>
-    
+    Filter Foods: <input ng-model= "filterQuery">
+    <button ng-click="toggleOrder('ingredient')">Sort By Ingredient</button>
+    <button ng-click="toggleOrder('spice')">Sort By Spice</button>
+    <h1>Number of food:{{foods.length}}</h1>
+    <div ng-repeat="food in foods|filter: filterQuery|orderBy:orderAttribute" >
+      <p>Ingredients: {{food.ingredient}}</p>
+      <p>Measurement: {{food.measurement}}</p>
+      <p ng-click="toggleSpice(food)">Spice: {{food.spice}}</p>
+      <!--   <p ng-if="food.measurement">{{food.measurement}}</p> -->
+      <div>
+        Ingredient: <input ng-model="food.ingredient" ng-keyup="updateFood(food)">
+        Measurement: <input ng-model="food.measurement" ng-keyup="updateFood(food)">
+        Spice: <input ng-model="food.spice" ng-keyup="updateFood(food)">
+        <button ng-click="deleteFood(food, $index)">Delete Food</button>
+
+      </div>
+    </div>
+    Add Food:
+    <div>
+      Ingredient: <input ng-model="foodIngredient">
+      Measurement: <input ng-model="foodMeasurement">
+      Spice: <input ng-model="foodSpice">
+      <button ng-click="addFood(foodIngredient,foodMeasurement,foodSpice)">Add food</button>
+    </div>
   </div>
 </div>
+

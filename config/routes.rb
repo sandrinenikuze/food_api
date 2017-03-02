@@ -9,7 +9,9 @@ namespace :api do
     delete "/foods/:id", to: 'foods#destroy'
   end 
 end
-get "/foods", to: "foods#index" 
+get "/foods", to: 'foods#index' 
+post "/foods", to: 'foods#create'
+delete "/foods/:id", to: 'foods#delete'
 end
 
 
