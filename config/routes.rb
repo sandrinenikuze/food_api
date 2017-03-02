@@ -8,7 +8,8 @@ namespace :api do
     patch "/foods/:id", to: 'foods#update'
     delete "/foods/:id", to: 'foods#destroy'
   end 
-end 
+end
+get "/foods", to: "foods#index" 
 end
 
 
