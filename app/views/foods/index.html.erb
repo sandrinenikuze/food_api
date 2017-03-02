@@ -1,0 +1,13 @@
+<div ng-app="app">
+  <div ng-controller="foodsCtrl" ng-init="setup()">
+  <h1>Number of food:{{foods.length}}</h1>
+  <div ng-repeat="food in foods">
+  <p>Ingredients: {{food.ingredient}}</p>
+  <p>Measurment: {{food.measurement}}</p>
+  <p ng-click="toggleSpice(food)">Spice: {{food.spice}}</p>
+ <!--  <p>M</p> -->
+    <!-- <h2 ng-click="toggleingredient(food)">{{food.ingredient}}</h2> -->
+  </div>
+    
+  </div>
+</div>
