@@ -1,15 +1,47 @@
-<div ng-app="app">
+ <div ng-app="app">
   <div ng-controller="foodsCtrl" ng-init="setup()">
     Filter Foods: <input ng-model= "filterQuery">
     <button ng-click="toggleOrder('ingredient')">Sort By Ingredient</button>
     <button ng-click="toggleOrder('spice')">Sort By Spice</button>
     <h1>Number of food:{{foods.length}}</h1>
-    <div ng-repeat="food in foods|filter: filterQuery|orderBy:orderAttribute" >
-      <p>Ingredients: {{food.ingredient}}</p>
-      <p>Measurement: {{food.measurement}}</p>
-      <p ng-click="toggleSpice(food)">Spice: {{food.spice}}</p>
-      <!--   <p ng-if="food.measurement">{{food.measurement}}</p> -->
-      <div>
+    <table class="table">
+      <tr>
+        <th ng-click="toggleOrder('ingredient')">Ingredient</th>
+        <th ng-click="toggleOrder('measurement')">Measurement</th>
+        <th ng-click="toggleOrder('spice')">Spice</th>
+        <th>Delete</th>
+        <th>Update</th>
+      </tr>
+      <tr ng-repeat="food in foods|filter: filterQuery|orderBy:orderAttribute">
+        <td>Ingredients: {{food.ingredient}}</td>
+        <td>Measurement: {{food.measurement}}</td>
+        <td>Spice: {{food.spice}}</td>
+        <td><button ng-click="deleteFood(food, $index)">Delete Food</button></td>
+        <td>
+          Ingredient: <input ng-model="food.ingredient" ng-keyup="updateFood(food)"
+          Measurement: <input ng-model="food.measurement" ng-keyup="updateFood(food)">
+          Spice: <input ng-model="food.spice" ng-keyup="updateFood(food)">
+        </td>
+      </tr>
+        <tr>
+          <td>Ingredient: <input ng-model="foodIngredient">
+            Measurement: <input ng-model="foodMeasurement">
+            Spice: <input ng-model="foodSpice">
+            <button ng-click="addFood(foodIngredient,foodMeasurement,foodSpice)">Add food</button>
+          </td>
+        </tr>
+    </table>
+  </div>
+</div>
+            
+
+
+<!-- <!-    
+    
+      
+     
+      <!-<p ng-if="food.measurement">{{food.measurement}}</p> -->
+      <!-- <div>
         Ingredient: <input ng-model="food.ingredient" ng-keyup="updateFood(food)">
         Measurement: <input ng-model="food.measurement" ng-keyup="updateFood(food)">
         Spice: <input ng-model="food.spice" ng-keyup="updateFood(food)">
@@ -17,13 +49,13 @@
 
       </div>
     </div>
-    Add Food:
-    <div>
+    Add Food: -->
+    <!-- <div>
       Ingredient: <input ng-model="foodIngredient">
       Measurement: <input ng-model="foodMeasurement">
       Spice: <input ng-model="foodSpice">
       <button ng-click="addFood(foodIngredient,foodMeasurement,foodSpice)">Add food</button>
     </div>
   </div>
-</div>
-
+</div> -->
+ 
